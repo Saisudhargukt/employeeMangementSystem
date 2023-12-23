@@ -1,0 +1,91 @@
+
+<div class="col-md-6 offset-md-3">
+    <h3>Update Employee</h3>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+        
+        <div class="form-group my-3">
+            <label>First Name</label>
+            <input type="text" class="form-control" name="firstName" formControlName="firstName">
+            <span class="red" *ngIf="isFieldInvalid('firstName') && isFieldTouched('firstName')">
+                <p *ngIf="employeeForm.get('firstName')?.errors?.['required']">First Name is required.</p>
+                <p *ngIf="employeeForm.get('firstName')?.errors?.['maxlength']">Maximum length exceeded (20 characters).</p>
+                <p *ngIf="employeeForm.get('firstName')?.errors?.['pattern']">Only characters are allowed.</p>
+            </span>
+        </div>
+         <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" name="lastName" formControlName="lastName">
+            <span class="red" *ngIf="isFieldInvalid('lastName') && isFieldTouched('lastName')">
+                <p *ngIf="employeeForm.get('lastName')?.errors?.['required']">Last Name is required.</p>
+                <p *ngIf="employeeForm.get('lastName')?.errors?.['maxlength']">Maximum length exceeded (20 characters).</p>
+                <p *ngIf="employeeForm.get('lastName')?.errors?.['pattern']">Only characters are allowed.</p>
+            </span>
+        </div>
+        
+        <div class="form-group">
+            <label>Email Id </label>
+
+            <input type="email" class="form-control"  name="emailId" formControlName="emailId">
+            <span class="red"
+            *ngIf="isFieldInvalid('emailId') && isFieldTouched('emailId')">
+              <p>EmailId required..!</p>
+            </span>
+        </div>
+      
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" class="form-control" name="phoneNumber" formControlName="phoneNumber">
+            <span class="red" *ngIf="isFieldInvalid('phoneNumber') && isFieldTouched('phoneNumber')">
+                <p *ngIf="employeeForm.get('phoneNumber')?.errors?.['required']">Phone Number is required.</p>
+                <p *ngIf="employeeForm.get('phoneNumber')?.errors?.['pattern']">Phone Number should contain exactly 10 digits and only digits are allowed.</p>
+            </span>
+        </div>
+        
+        
+        <div class="form-group">
+            <label>Designation</label>
+            <select class="form-control" name="designation" formControlName="designation">
+              <option *ngFor="let designation of employeeDesignations" [value]="designation">{{ designation }}</option>
+            </select>
+            <span class="red" *ngIf="isFieldInvalid('designation') && isFieldTouched('designation')">
+              <p>Designation is required.</p>
+            </span>
+          </div>
+          
+       
+        <div class="form-group">
+            <label>Salary</label>
+            <select class="form-control" name="salary" formControlName="salary">
+              <option *ngFor="let salary of employeeSalaries" [value]="salary">{{ salary }}</option>
+            </select>
+            <span class="red" *ngIf="isFieldInvalid('salary') && isFieldTouched('salary')">
+              <p>Salary is required.</p>
+            </span>
+          </div>
+          
+       
+        <div class="form-group">
+  <label>State</label>
+  <select class="form-control" name="state" formControlName="state">
+    <option value="">Select State</option>
+    <option *ngFor="let state of indianStates" [value]="state">{{ state }}</option>
+  </select>
+  <span class="red" *ngIf="isFieldInvalid('state') && isFieldTouched('state')">
+    <p>State is required.</p>
+  </span>
+</div>
+
+        <div class="form-group">
+            <label>Joining date</label>
+            <input type="date" class="form-control"  name="dateColumn" formControlName="dateColumn">
+            <span class="red"
+            *ngIf="isFieldInvalid('dateColumn') && isFieldTouched('dateColumn')"><p>state
+                is required..!</p></span>
+        </div>
+
+        <!-- Include other form fields similarly for emailId, phoneNumber, designation, salary, state, and dateColumn -->
+
+        <button class="btn btn-success" type="submit" [disabled]="employeeForm.invalid">Submit</button>
+    </form>
+</div>

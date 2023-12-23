@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*.footer { 
+    
+    position: relative; 
+    bottom: 0; 
+    width: 100%;
+    left: 0; 
+    background-color:blue;
+    color: white;
+    text-align: center;
+    z-index: 5;
+}*/
+/* Example of Sticky Footer */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .content {
+    /* Set appropriate padding or margins to avoid content overlapping the footer */
+    padding-bottom: 60px; /* Adjust according to your footer's height */
+  }
+  
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 20px; /* Adjust height as per your design */
+    background-color: #ccc;
+  }

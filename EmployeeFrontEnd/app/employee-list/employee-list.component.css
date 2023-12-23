@@ -1,0 +1,25 @@
+.table-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+  }
+  
+  .table {
+    width: 100%; /* Ensure the table fills its container */
+    white-space: nowrap; /* Prevent text wrapping in table cells */
+  }
+  
+  .table th, .table td {
+    /* Define styles for table cells */
+    /* For example: */
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  td {
+    padding: 18px; /* Adjust padding as needed */
+    border: 1px solid #ddd;
+    word-wrap: break-word; /* Wrap long words */
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  

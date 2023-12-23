@@ -1,0 +1,124 @@
+<div class="col-md-6 offset-md-3">
+    <h3>Create Employee</h3>
+    <form [formGroup]="validateForm " (ngSubmit)="onSubmit()">
+
+      
+        <div class="form-group my-3">
+            <label for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" formControlName="firstName">
+            <span class="red" *ngIf="validateForm.get('firstName')?.touched && validateForm.get('firstName')?.hasError('required')">
+                <p>First Name is required..!</p>
+            </span>
+            <span class="red" *ngIf="validateForm.get('firstName')?.hasError('pattern')">
+                <p>Only characters are allowed..!</p>
+            </span>
+            <span class="red" *ngIf="validateForm.get('firstName')?.hasError('minlength')">
+                <p>Minimum length of 20 characters is required..!</p>
+            </span>
+        </div>
+        
+      
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" formControlName="lastName">
+            <span class="red"
+                *ngIf="validateForm.get('lastName')?.touched && validateForm.get('lastName')?.hasError('required')">
+                <p>Last Name is required..!</p>
+            </span>
+            <span class="red"
+                *ngIf="validateForm.get('lastName')?.touched && validateForm.get('lastName')?.hasError('pattern')">
+                <p>Last Name must contain only letters and spaces.</p>
+            </span>
+            <span class="red"
+                *ngIf="validateForm.get('lastName')?.touched && validateForm.get('lastName')?.hasError('maxlength')">
+                <p>Last Name must be 20 characters or less.</p>
+            </span>
+        </div>
+        
+
+        <div class="form-group">
+            <label>Email Id </label>
+
+            <input type="email" class="form-control" id="emailId" name="emailId" formControlName="emailId">
+            <span class="red"
+                *ngIf="validateForm.get('emailId')?.touched && validateForm.get('emailId')?.hasError('required')">
+              <p>EmailId required..!</p>
+            </span>
+        </div>
+      
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" class="form-control" name="phoneNumber" formControlName="phoneNumber">
+            <span class="red"
+                *ngIf="validateForm.get('phoneNumber')?.touched && validateForm.get('phoneNumber')?.hasError('required')">
+                <p>Phone Number is required.</p>
+            </span>
+            <span class="red"
+                *ngIf="validateForm.get('phoneNumber')?.touched && validateForm.get('phoneNumber')?.hasError('invalidPhoneNumber')">
+                <p>Please enter a 10-digit number.</p>
+            </span>
+        </div>
+       
+        <div class="form-group">
+            <label for="designation">Designation</label>
+            <select class="form-control" id="designation" name="designation" formControlName="designation">
+              <option value="" disabled selected>Select Designation</option>
+              <option *ngFor="let designation of employeeDesignations" [value]="designation">{{ designation }}</option>
+            </select>
+            <span class="red"
+              *ngIf="validateForm.get('designation')?.touched && validateForm.get('designation')?.hasError('required')">
+              <p>Designation is required.</p>
+            </span>
+            <span class="red"
+              *ngIf="validateForm.get('designation')?.touched && validateForm.get('designation')?.hasError('invalidDesignation')">
+              <p>Please enter only characters for the designation.</p>
+            </span>
+          </div>
+          
+
+
+     
+        <div class="form-group">
+            <label for="salary">Salary</label>
+            <select class="form-control" id="salary" name="salary" formControlName="salary">
+                <option *ngFor="let option of salaryOptions" [value]="option">{{ option }}</option>
+            </select>
+            <span class="red" *ngIf="validateForm.get('salary')?.touched && validateForm.get('salary')?.hasError('required')">
+                <p>Salary is required..!</p>
+            </span>
+        </div>
+        
+       
+        <div class="form-group">
+            <label for="state">State</label>
+            <select class="form-control" id="state" name="state" formControlName="state">
+                <option *ngFor="let option of stateOptions" [value]="option">{{ option }}</option>
+            </select>
+            <span class="red" *ngIf="validateForm.get('state')?.touched && validateForm.get('state')?.hasError('required')">
+                <p>State is required..!</p>
+            </span>
+        </div>
+        
+        <div class="form-group">
+            <label>Joining date</label>
+            <input type="date" class="form-control" id="dateColumn" name="dateColumn" formControlName="dateColumn">
+            <span class="red"
+                *ngIf="validateForm.get('dateColumn')?.touched && validateForm.get('dateColumn')?.hasError('required')"><p>state
+                is required..!</p></span>
+        </div>
+       <!-- <div class="form-group">
+            <label>File</label>
+            <input type="file" (change)="onFileSelected($event)" class="form-control" id="fileData" name="fileData">
+            <span class="red"
+                *ngIf="!employee.fileData"><p>Please select a file</p></span>
+        </div>-->
+
+        
+
+
+        <button class="btn btn-success" type="submit" [disabled]="validateForm.invalid">Submit</button>
+
+
+
+    </form>
+</div>
